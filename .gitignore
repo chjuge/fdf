@@ -3,3 +3,5 @@ a.out
 *test*
 fdf
 *.o
+libmlx.dylib
+*vscode*
