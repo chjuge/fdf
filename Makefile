@@ -1,7 +1,5 @@
 DIR		= 	src
 
-MAIN	=	$(DIR)/main.c
-
 SRCS	=	$(DIR)/create_new_remainder.c \
 			$(DIR)/cut_from_remainder.c \
 			$(DIR)/find_end_of_line.c \
@@ -15,8 +13,10 @@ OBJS	= 	$(SRCS:.c=.o)
 
 HEAD	=	header/fdf.h
 
+MINLIB	=	minilibx-linux/libmlx.a
+
 CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra 
+CFLAGS	=	-Wall -Wextra -Werror 
 
 RM		=	rm -rf
 
@@ -24,11 +24,11 @@ NAME	=	fdf
 
 all:		$(NAME)
 
-%.o:		%.c	$(HEAD)
-			$(CC) $(CFLAGS) -c $< -o $@
+%.o:		%.c	$(HEAD) 
+			$(CC) $(CFLAGS) $(MINLIB) -O3 -c $< -o $@
 
-$(NAME):	$(OBJS) $(HEAD)
-			$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+$(NAME):	$(OBJS) $(HEAD) 
+			$(CC) $(CFLAGS) $(OBJS) $(MINLIB) -lXext -lX11 -lm -lz -o $(NAME)
 
 clean:		
 			$(RM) $(OBJS) $(OM) $(BOBJS)
