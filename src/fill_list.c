@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:05:11 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/04 19:11:31 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/05 11:40:58 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,39 @@ t_str	*ft_lstnew(char *str)
 void	add_back(t_str **head, t_str *new)
 {
 	t_str	*tmp;
+		// printf("1\n");
 
-	if (!head)
+	if (!(*head))
 	{
-		head = &new;
+		*head = new;
 		return ;
 	}
+		// printf("2\n");
 	tmp = *head;
+		// printf("%p	%p\n", tmp, tmp->next);
 	while (tmp->next)
+	{
+		// printf("4\n");
 		tmp = tmp->next;
+	}
+		// printf("5\n");
 	tmp->next = new;
+}
+
+void	show_array(int *arr, int len)
+{
+	for (int i = 0; i < len; i++)
+		printf("%5d	", arr[i]);
+	printf("\n");
+}
+
+void	show_list(t_str *list)
+{
+	while (list)
+	{
+		show_array(list->arr, list->len);
+		list = list->next;
+	}
 }
 
 int	fill_list(char *map)
@@ -94,14 +117,19 @@ int	fill_list(char *map)
 	int		height;
 
 	height = 0;
+	list = NULL;
 	fd = open(map, O_RDONLY);
 	while ((str = get_next_line(fd)))
 	{
-		printf ("%s",str);
+		str = ft_strtrim(str, "\n");
 		add_back(&list, ft_lstnew(str));
+		// printf ("%s",str);
+		// printf("1\n");
 		free(str);
+		// printf("2\n");
 		height++;
 	}
+	show_list(list);
 	// if (!check_width(list))
 	// {
 		// full_free(list);

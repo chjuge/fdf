@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 22:46:42 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/04 19:15:52 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/05 11:36:13 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@
 # include <sys/uio.h>
 # include <stdlib.h>
 # include <math.h>
-# include <mlx.h>
 # include <string.h>
 # include <stdlib.h>
+// # include <mlx.h>
+# include "../minilibx-linux/mlx.h"
 
 typedef struct	s_str
 {
@@ -41,6 +42,9 @@ size_t	ft_strlen(const char *s);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 int		ft_isdigit(int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t len);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+char	*ft_strtrim(char *s1, char const *set);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_atoi(const char *str);
 char	*create_new_remainder(char *old_rem, char *buf, int buf_len);
 char	*cut_from_remainder(char **old_rem);

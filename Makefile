@@ -11,14 +11,17 @@ SRCS	=	$(DIR)/create_new_remainder.c \
 			$(DIR)/fill_list.c \
 			$(DIR)/ft_atoi.c \
 			$(DIR)/ft_strncmp.c \
-			$(DIR)/ft_split.c
+			$(DIR)/ft_split.c \
+			$(DIR)/ft_substr.c \
+			$(DIR)/ft_strtrim.c \
+			$(DIR)/ft_strlcpy.c
 
 OBJS	= 	$(SRCS:.c=.o)
 
 HEAD	=	header/fdf.h
 
-MINLIB	=	minilibx_macos/libmlx.a
-# MINLIB	=	minilibx-linux/libmlx.a
+# MINLIB	=	minilibx_macos/libmlx.a
+MINLIB	=	minilibx-linux/libmlx.a
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror 
@@ -30,12 +33,12 @@ NAME	=	fdf
 all:		$(NAME)
 
 %.o:		%.c	$(HEAD) 
-# $(CC) $(CFLAGS) -O3 -c $< -o $@
-			$(CC) $(CFLAGS) -Imlx -c $< -o $@
+			$(CC) $(CFLAGS) -O3 -c $< -o $@
+# $(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 $(NAME):	$(OBJS) $(HEAD) 
-			$(CC) $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-# $(CC) $(CFLAGS) $(OBJS) $(MINLIB) -lXext -lX11 -lm -lz -o $(NAME)
+			$(CC) $(CFLAGS) $(OBJS) $(MINLIB) -lXext -lX11 -lm -lz -o $(NAME)
+# $(CC) $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:		
 			$(RM) $(OBJS)
