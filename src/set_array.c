@@ -1,49 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   set_array.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/02 22:49:05 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/06 15:39:47 by mproveme         ###   ########.fr       */
+/*   Created: 2022/04/06 15:37:19 by mproveme          #+#    #+#             */
+/*   Updated: 2022/04/06 15:37:56 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int	*set_array(char *str, int *len)
 {
-	size_t	i;
+	char	**vals;
+	int		i;
+	int		*arr;
 
+	vals = ft_split(str, ' ');
+	*len = find_lines_count(vals);
+	arr = malloc(sizeof(int) * (*len));
 	i = 0;
-	if (n == 0)
-		return (dst);
-	if (!src && !dst)
-		return (0);
-	while (i < n)
+	while (i < *len)
 	{
-		((char *)(dst))[i] = ((char *)(src))[i];
+		arr[i] = ft_atoi(vals[i]);
 		i++;
 	}
-	return ((char *)(dst));
-}
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
-}
-
-int	ft_isdigit(int c)
-{
-	if (c < '0' || c > '9')
-		return (0);
-	return (1);
+	deep_free(vals);
+	return (arr);
 }

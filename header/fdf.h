@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 22:46:42 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/05 11:36:13 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:36:45 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,42 @@
 // # include <mlx.h>
 # include "../minilibx-linux/mlx.h"
 
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
 typedef struct	s_str
 {
 	struct s_str	*next;
 	int				*arr;
 	int				len;
 }	t_str;
+
+typedef struct	s_point
+{
+	int		x;
+	int		y;
+	int		z;
+	struct	s_point *next_x;
+	struct	s_point *prev_y;
+}	t_point;
+
+typedef struct	s_line
+{
+	struct s_line	*next;
+	t_point			*p_head;
+}	t_line;
+
+typedef struct	s_map
+{
+	t_line	*head;
+	int		w;
+	int		h;
+}	t_map;
 
 char	*get_next_line(int fd);
 int		find_end_of_line(char *buf);
@@ -52,5 +82,17 @@ int		read_file(char **remainder, int fd);
 int		find_len_next_line(char *str);
 char	**ft_split(char const *s, char c);
 int		fill_list(char *map);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	draw_line(int x1, int y1, int x2, int y2, t_data *img);
+
+
+t_str	*ft_lstnew(char *str);
+void	add_back(t_str **head, t_str *new);
+void	show_array(int *arr, int len);
+void	show_list(t_str *list);
+int		find_lines_count(char **strs);
+void	deep_free(char **strs);
+int		*set_array(char *str, int *len);
+
 
 #endif

@@ -1,49 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   show.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/02 22:49:05 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/06 15:39:47 by mproveme         ###   ########.fr       */
+/*   Created: 2022/04/06 15:34:07 by mproveme          #+#    #+#             */
+/*   Updated: 2022/04/06 15:34:32 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	show_array(int *arr, int len)
 {
-	size_t	i;
+	for (int i = 0; i < len; i++)
+		printf("%5d	", arr[i]);
+	printf("\n");
+}
 
-	i = 0;
-	if (n == 0)
-		return (dst);
-	if (!src && !dst)
-		return (0);
-	while (i < n)
+void	show_list(t_str *list)
+{
+	while (list)
 	{
-		((char *)(dst))[i] = ((char *)(src))[i];
-		i++;
+		show_array(list->arr, list->len);
+		list = list->next;
 	}
-	return ((char *)(dst));
-}
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
-}
-
-int	ft_isdigit(int c)
-{
-	if (c < '0' || c > '9')
-		return (0);
-	return (1);
 }

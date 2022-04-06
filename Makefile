@@ -14,7 +14,14 @@ SRCS	=	$(DIR)/create_new_remainder.c \
 			$(DIR)/ft_split.c \
 			$(DIR)/ft_substr.c \
 			$(DIR)/ft_strtrim.c \
-			$(DIR)/ft_strlcpy.c
+			$(DIR)/ft_strlcpy.c \
+			$(DIR)/draw_line.c \
+			$(DIR)/lstnew.c \
+			$(DIR)/add_back.c \
+			$(DIR)/show.c \
+			$(DIR)/find_lines_count.c \
+			$(DIR)/deep_free.c \
+			$(DIR)/set_array.c
 
 OBJS	= 	$(SRCS:.c=.o)
 

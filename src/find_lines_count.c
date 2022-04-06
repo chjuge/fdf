@@ -1,49 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   find_lines_count.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/02 22:49:05 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/06 15:39:47 by mproveme         ###   ########.fr       */
+/*   Created: 2022/04/06 15:35:44 by mproveme          #+#    #+#             */
+/*   Updated: 2022/04/06 15:36:52 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	if (n == 0)
-		return (dst);
-	if (!src && !dst)
-		return (0);
-	while (i < n)
-	{
-		((char *)(dst))[i] = ((char *)(src))[i];
-		i++;
-	}
-	return ((char *)(dst));
-}
-
-size_t	ft_strlen(const char *s)
+int	find_lines_count(char **strs)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
+	while (strs[i])
 		i++;
 	return (i);
-}
-
-int	ft_isdigit(int c)
-{
-	if (c < '0' || c > '9')
-		return (0);
-	return (1);
 }

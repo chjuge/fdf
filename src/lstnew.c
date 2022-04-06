@@ -1,49 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   lstnew.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/02 22:49:05 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/06 15:39:47 by mproveme         ###   ########.fr       */
+/*   Created: 2022/04/06 15:31:29 by mproveme          #+#    #+#             */
+/*   Updated: 2022/04/06 15:31:55 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+t_str	*ft_lstnew(char *str)
 {
-	size_t	i;
+	t_str	*new_el;
 
-	i = 0;
-	if (n == 0)
-		return (dst);
-	if (!src && !dst)
+	new_el = malloc(sizeof(t_str));
+	if (!new_el)
 		return (0);
-	while (i < n)
-	{
-		((char *)(dst))[i] = ((char *)(src))[i];
-		i++;
-	}
-	return ((char *)(dst));
-}
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
-}
-
-int	ft_isdigit(int c)
-{
-	if (c < '0' || c > '9')
-		return (0);
-	return (1);
+	new_el->arr = set_array(str, &new_el->len);
+	new_el->next = NULL;
+	return (new_el);
 }
