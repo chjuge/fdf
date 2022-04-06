@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:31:29 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/06 15:31:55 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:02:23 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,42 @@ t_str	*ft_lstnew(char *str)
 	new_el->next = NULL;
 	return (new_el);
 }
+
+t_point *ft_lstnew_point(int x, int y, char *z)
+{
+	t_point	*p;
+
+	p = malloc(sizeof(t_point));
+	p->x = x;
+	p->y = y;
+	p->z = ft_atoi(z);
+	p->next = NULL;
+	return (p);
+}
+
+t_line *ft_lstnew_line(char *str, int h, int *w)
+{
+	char	**vals;
+	int		i;
+	t_line	*line;
+
+	vals = ft_split(str, ' ');
+	i = 0;
+	line->p_head = NULL;
+	while (vals[i])
+	{
+		add_back_point(&(line->p_head), ft_lstnew_point(i, h, vals[i]));
+		i++;
+	}
+	deep_free(vals);
+	if (*w == 0)
+		*w = i;
+	if (*w != i)
+	{
+		// deep_free_1();
+		printf("daite pravil'nuyu kartu, pidary\n");
+		return (NULL);
+	}
+	return (line);
+}
+

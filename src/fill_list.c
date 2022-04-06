@@ -6,13 +6,11 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:05:11 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/06 15:37:45 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:01:24 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
-
-
 
 int	fill_list(char *map)
 {
@@ -28,17 +26,40 @@ int	fill_list(char *map)
 	{
 		str = ft_strtrim(str, "\n");
 		add_back(&list, ft_lstnew(str));
-		// printf ("%s",str);
-		// printf("1\n");
 		free(str);
-		// printf("2\n");
 		height++;
 	}
 	show_list(list);
-	// if (!check_width(list))
-	// {
-		// full_free(list);
-	// 	return (-1);
-	// }
 	return (height);
+}
+
+t_map	*init_map()
+{
+	t_map	*map;
+
+	map = malloc(sizeof(t_map));
+	map->w = 0;
+	map->h = 0;
+	map->head = NULL;
+	return (map);
+}
+
+t_map	*fill_t_map(char *param)
+{
+	int		fd;
+	char	*str;
+	int		i;
+	t_map	*map;
+
+	map = init_map();
+	fd = open(param, O_RDONLY);
+	while ((str = get_next_line(fd)))
+	{
+		str = ft_strtrim(str, "\n");
+		add_back_line(&map->head, ft_lstnew_line(str, map->h, &map->w));
+		free(str);
+		map->h++;
+	}
+	show_map(map);
+	return(map);
 }

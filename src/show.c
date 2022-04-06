@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:34:07 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/06 15:34:32 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:07:25 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,27 @@ void	show_list(t_str *list)
 	{
 		show_array(list->arr, list->len);
 		list = list->next;
+	}
+}
+
+void	show_line(t_line *line)
+{
+	t_point *p = line->p_head;
+
+	while (p)
+	{
+		printf("%3d	", p->z);
+		p = p->next;
+	}
+	printf("\n");	
+}
+
+void	show_map(t_map *map)
+{
+	t_line	*tmp = map->head;
+	while (tmp)
+	{
+		show_line(map->head);
+		tmp = tmp->next;
 	}
 }
