@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:34:07 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/06 17:07:25 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/06 19:10:28 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	show_line(t_line *line)
 
 	while (p)
 	{
-		printf("%3d	", p->z);
+		// printf("%d.%d.%d	", p->x, p->y, p->z);
+		printf("%3d", p->z);
 		p = p->next;
 	}
 	printf("\n");	
@@ -42,10 +43,13 @@ void	show_line(t_line *line)
 
 void	show_map(t_map *map)
 {
-	t_line	*tmp = map->head;
+	t_line	*tmp;
+	
+	tmp = map->head;
 	while (tmp)
 	{
-		show_line(map->head);
+		// printf("'%p'\n", tmp);
+		show_line(tmp);
 		tmp = tmp->next;
 	}
 }

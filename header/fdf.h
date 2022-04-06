@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 22:46:42 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/06 17:01:19 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:11:54 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	add_back(t_str **head, t_str *new);
 
 void	show_array(int *arr, int len);
 void	show_list(t_str *list);
+void	show_map(t_map *map);
+void	show_line(t_line *line);
 
 int		find_lines_count(char **strs);
 void	deep_free(char **strs);
@@ -99,5 +101,6 @@ void	add_back_line(t_line **head, t_line *new);
 void	add_back_point(t_point **head, t_point *new);
 t_line	*ft_lstnew_line(char *str, int h, int *w);
 t_point	*ft_lstnew_point(int x, int y, char *z);
+t_map	*fill_t_map(char *param);
 
 #endif
