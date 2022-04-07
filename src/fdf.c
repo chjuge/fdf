@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 23:09:13 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/07 17:47:36 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/07 23:57:56 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,16 @@ int	main(int argc, char **argv)
 	if (!map)
 		printf("error\n");
 	// drawmap(map, &img);
-	t_map *map1 = translate_map(map, 30, 30, 30);
+	t_map *map1 = scale_map(map, 30, 30, 5);
+	// t_map *map2 = translate_map(map1, 500, 0, 0);
+	t_map *map2 = translate_map(map1, 500, 100, 0);
+	t_map *map3 = rotate_map(map2, 0, 45);
+	t_map *map4 = rotate_map(map3, 1, 45);
+	// t_map *map3 = rotate_map(map2, 2, 45);
 	// printf("error\n");
+	drawmap(map4, &img);
 
-	drawmap(map1, &img);
+	// drawmap(map1, &img);
 	// while (x < 100)
 	// {
 	// 	my_mlx_pixel_put(&img, x, y, 0xffffff);

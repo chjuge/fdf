@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 22:46:42 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/07 14:21:12 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/07 23:15:39 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ typedef struct	s_str
 
 typedef struct	s_point
 {
-	int		x;
-	int		y;
-	int		z;
+	float	x;
+	float	y;
+	float	z;
 	struct	s_point *next;
 }	t_point;
 
@@ -105,13 +105,16 @@ t_map	*fill_t_map(char *param);
 
 void	drawmap(t_map *map, t_data *img);
 
-int		*point_to_vector(t_point *p);
-t_point *vector_to_point(int vec[4]);
-int		*m_v__multiply(int **m, int *v);
-int		**fill_identity_m();
-int		*translate_vector(int v[4], int dx, int dy, int dz);
+float	*point_to_vector(t_point *p);
+t_point *vector_to_point(float vec[4]);
+float	*m_v__multiply(float **m, float *v);
+float	**fill_identity_m();
+float	*translate_vector(float v[4], int dx, int dy, int dz);
 t_point	*translate_point(t_point *old_p, int dx, int dy, int dz);
 t_line	*translate_line(t_line *old_line, int dx, int dy, int dz);
 t_map	*translate_map(t_map *old_map, int dx, int dy, int dz);
+
+t_map	*scale_map(t_map *old_map, int sx, int sy, int sz);
+t_map	*rotate_map(t_map *old_map, int mode, int angle);
 
 #endif

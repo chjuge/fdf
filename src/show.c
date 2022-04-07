@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:34:07 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/07 17:56:36 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/07 23:14:29 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	show_line(t_line *line)
 	while (p)
 	{
 		// printf("%d.%d.%d	", p->x, p->y, p->z);
-		printf("%3d", p->z);
+		printf("%3f", p->z);
 		p = p->next;
 	}
 	printf("\n");	
