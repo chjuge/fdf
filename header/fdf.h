@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 22:46:42 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/07 12:00:19 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/07 14:21:12 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,14 @@ t_point	*ft_lstnew_point(int x, int y, char *z);
 t_map	*fill_t_map(char *param);
 
 void	drawmap(t_map *map, t_data *img);
+
+int		*point_to_vector(t_point *p);
+t_point *vector_to_point(int vec[4]);
+int		*m_v__multiply(int **m, int *v);
+int		**fill_identity_m();
+int		*translate_vector(int v[4], int dx, int dy, int dz);
+t_point	*translate_point(t_point *old_p, int dx, int dy, int dz);
+t_line	*translate_line(t_line *old_line, int dx, int dy, int dz);
+t_map	*translate_map(t_map *old_map, int dx, int dy, int dz);
 
 #endif

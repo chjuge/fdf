@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:27:04 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/07 12:32:15 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/07 17:58:47 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	draw_line(int x1, int y1, int x2, int y2, t_data *img)
 	int	sign[2];
 	int	error[2];
 
-	x1 *= 50;
-	x2 *= 50;
-	y1 *= 50;
-	y2 *= 50;
+	x1 *= 10;
+	x2 *= 10;
+	y1 *= 10;
+	y2 *= 10;
 	delta[0] = abs(x2 - x1);
 	delta[1] = abs(y2 - y1);
 	sign[0] = find_sign(x1, x2);

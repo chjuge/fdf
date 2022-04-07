@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 23:09:13 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/07 12:01:02 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/07 17:47:36 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,11 @@ int	main(int argc, char **argv)
 	// 				map->head->next->next->p_head->next->next->next->z);
 	if (!map)
 		printf("error\n");
-	drawmap(map, &img);
+	// drawmap(map, &img);
+	t_map *map1 = translate_map(map, 30, 30, 30);
+	// printf("error\n");
+
+	drawmap(map1, &img);
 	// while (x < 100)
 	// {
 	// 	my_mlx_pixel_put(&img, x, y, 0xffffff);

@@ -6,47 +6,44 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 11:56:22 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/07 12:32:44 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/07 12:49:44 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
 
+static void	draw_2_lines(t_point *p[2], t_data *img)
+{
+	draw_line(p[0]->x, p[0]->y, p[0]->next->x, p[0]->next->y, img);
+	draw_line(p[0]->x, p[0]->y, p[1]->x, p[1]->y, img);
+}
+
 void	draw_by_data(t_map *map, t_data *img)
 {
-	t_line	*line1;
-	t_line	*line2;
-	t_point	*p_l1;
-	t_point	*p_l2;
+	t_line	*line[2];
+	t_point	*p[2];
 
-	int n = 0;
-	// printf("--- n:	%d\n", n++);
-	line1 = map->head;
-	// printf("--- n:	%d\n", n++);
-	line2 = map->head->next;
-	// printf("--- n:	%d\n", n++);
-	while (line1->next)
+	line[0] = map->head;
+	line[1] = map->head->next;
+	while (line[0]->next)
 	{
-	printf("--- n:	%d\n", n++);
-		p_l1 = line1->p_head;
-		p_l2 = line2->p_head;
-		while (p_l1->next)
+		p[0] = line[0]->p_head;
+		p[1] = line[1]->p_head;
+		while (p[0]->next)
 		{
-			draw_line(p_l1->x, p_l1->y, p_l1->next->x, p_l1->next->y, img);
-			draw_line(p_l1->x, p_l1->y, p_l2->x, p_l2->y, img);
-			p_l1 = p_l1->next;
-			p_l2 = p_l2->next;
+			draw_2_lines(p, img);
+			p[0] = p[0]->next;
+			p[1] = p[1]->next;
 		}
-		draw_line(p_l1->x, p_l1->y, p_l2->x, p_l2->y, img);
-		line1 = line1->next;
-		line2 = line2->next;
+		draw_line(p[0]->x, p[0]->y, p[1]->x, p[1]->y, img);
+		line[0] = line[0]->next;
+		line[1] = line[1]->next;
 	}
-	// printf("--- !!n:	%d\n", n++);
-	p_l1 = line1->p_head;
-	while (p_l1->next)
+	p[0] = line[0]->p_head;
+	while (p[0]->next)
 	{
-		draw_line(p_l1->x, p_l1->y, p_l1->next->x, p_l1->next->y, img);
-		p_l1 = p_l1->next;
+		draw_line(p[0]->x, p[0]->y, p[0]->next->x, p[0]->next->y, img);
+		p[0] = p[0]->next;
 	}
 }
 

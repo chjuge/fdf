@@ -22,7 +22,8 @@ SRCS	=	$(DIR)/create_new_remainder.c \
 			$(DIR)/find_lines_count.c \
 			$(DIR)/deep_free.c \
 			$(DIR)/set_array.c \
-			$(DIR)/drawmap.c
+			$(DIR)/drawmap.c \
+			$(DIR)/matrix.c 
 
 OBJS	= 	$(SRCS:.c=.o)
 
