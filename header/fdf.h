@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 22:46:42 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/06 17:11:54 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/07 12:00:19 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,7 @@ void	add_back_point(t_point **head, t_point *new);
 t_line	*ft_lstnew_line(char *str, int h, int *w);
 t_point	*ft_lstnew_point(int x, int y, char *z);
 t_map	*fill_t_map(char *param);
+
+void	drawmap(t_map *map, t_data *img);
 
 #endif
