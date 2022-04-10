@@ -23,7 +23,8 @@ SRCS	=	$(DIR)/create_new_remainder.c \
 			$(DIR)/deep_free.c \
 			$(DIR)/set_array.c \
 			$(DIR)/drawmap.c \
-			$(DIR)/matrix.c 
+			$(DIR)/matrix.c \
+			$(DIR)/key_listener.c
 
 OBJS	= 	$(SRCS:.c=.o)
 

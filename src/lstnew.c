@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:31:29 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/06 19:11:33 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/10 12:27:28 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,38 @@ t_str	*ft_lstnew(char *str)
 	return (new_el);
 }
 
+int	check_for_coma(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == ',')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 t_point *ft_lstnew_point(int x, int y, char *z)
 {
 	t_point	*p;
+	char	**elems;
 
 	p = malloc(sizeof(t_point));
+	p->next = NULL;
 	p->x = x;
 	p->y = y;
-	p->z = ft_atoi(z);
-	// printf("in point-->	x: %d, y: %d, z(s): '%s', z: %d\n", x, y, z, p->z);
-	p->next = NULL;
+	if (!check_for_coma(z))
+	{
+		p->z = ft_atoi(z);
+		p->color = WHITE;
+		return (p);
+	}
+	elems = ft_split(z, ',');
+	p->z = ft_atoi(elems[0]);
+	p->color = strtol(elems[1], 0, 16);
 	return (p);
 }
 

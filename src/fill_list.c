@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:05:11 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/06 17:37:50 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/10 12:33:32 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ t_map	*fill_t_map(char *param)
 
 	map = init_map();
 	fd = open(param, O_RDONLY);
+	if (fd < 0)
+		return NULL;
 	while ((str = get_next_line(fd)))
 	{
 		str = ft_strtrim(str, "\n");

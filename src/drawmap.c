@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 11:56:22 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/07 12:49:44 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/10 12:30:57 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,20 @@ void	draw_by_data(t_map *map, t_data *img)
 	}
 }
 
-void	drawmap(t_map *map, t_data *img)
+void	drawmap(t_map *map, t_data *data)
 {
-	void	*mlx;
-	void	*mlx_win;
-
-	mlx = mlx_init();
+	data->mlx = mlx_init();
 	show_map(map);
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	img->img = mlx_new_image(mlx, 1920, 1080);
-	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length,
-								&img->endian);
-	// draw_line(90, 90, 550, 550, img);
-	draw_by_data(map, img);
-	mlx_put_image_to_window(mlx, mlx_win, img->img, 10, 10);
-	// mlx_string_put(mlx, mlx_win, 100, 100, 0xffffff, "Hello!");
-	mlx_loop(mlx);
+	data->win = mlx_new_window(data->mlx, 1920, 1080, "Hello world!");
+	data->img = mlx_new_image(data->mlx, 1920, 1080);
+	data->mlx_addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length,
+								&data->endian);
+	printf("drops 1\n");
+	draw_by_data(map, data);
+	printf("drops 1\n");
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 10, 10);
+	mlx_key_hook(data->win, key_listener, data);
+	// mlx_hook(data->win, 17, 0, close_program, data);
+	mlx_hook(data->win, 17, 1L<<17, close_program, data);
+	mlx_loop(data->mlx);
 }

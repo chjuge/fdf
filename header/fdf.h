@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 22:46:42 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/07 23:15:39 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/10 12:23:00 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,7 @@
 # include <stdlib.h>
 // # include <mlx.h>
 # include "../minilibx-linux/mlx.h"
-
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+# define WHITE 0xffffff
 
 typedef struct	s_str
 {
@@ -46,10 +39,11 @@ typedef struct	s_str
 
 typedef struct	s_point
 {
-	float	x;
-	float	y;
-	float	z;
-	struct	s_point *next;
+	struct	s_point	*next;
+	float			x;
+	float			y;
+	float			z;
+	int				color;
 }	t_point;
 
 typedef struct	s_line
@@ -64,6 +58,19 @@ typedef struct	s_map
 	int		w;
 	int		h;
 }	t_map;
+
+typedef struct	s_data {
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*mlx_addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	t_map	*map;
+	int		x_move;
+	int		y_move;
+}				t_data;
 
 char	*get_next_line(int fd);
 int		find_end_of_line(char *buf);
@@ -116,5 +123,8 @@ t_map	*translate_map(t_map *old_map, int dx, int dy, int dz);
 
 t_map	*scale_map(t_map *old_map, int sx, int sy, int sz);
 t_map	*rotate_map(t_map *old_map, int mode, int angle);
+
+int	key_listener(int key, t_data *data);
+int	close_program(t_data *data);
 
 #endif
