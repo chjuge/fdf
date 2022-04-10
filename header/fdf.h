@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/02 22:46:42 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/10 12:23:00 by mproveme         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FDF_H
 # define FDF_H
 
@@ -68,8 +56,6 @@ typedef struct	s_data {
 	int		line_length;
 	int		endian;
 	t_map	*map;
-	int		x_move;
-	int		y_move;
 }				t_data;
 
 char	*get_next_line(int fd);
@@ -89,7 +75,8 @@ int		find_len_next_line(char *str);
 char	**ft_split(char const *s, char c);
 int		fill_list(char *map);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	draw_line(int x1, int y1, int x2, int y2, t_data *img);
+void	draw_line(t_point *p1, t_point *p2, t_data *img);
+
 
 
 t_str	*ft_lstnew(char *str);
@@ -99,6 +86,8 @@ void	show_array(int *arr, int len);
 void	show_list(t_str *list);
 void	show_map(t_map *map);
 void	show_line(t_line *line);
+void	show_point(t_point *p);
+
 
 int		find_lines_count(char **strs);
 void	deep_free(char **strs);

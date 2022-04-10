@@ -6,11 +6,24 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 12:55:19 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/07 23:56:30 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/10 20:18:47 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
+
+void	free_matrix(float **m)
+{
+	int	i;
+	
+	i = 0;
+	while (i < 4)
+	{
+		free(m[i]);
+		i++;
+	}
+	free(m);
+}
 
 float	rad(int angle)
 {
@@ -91,6 +104,7 @@ float	*scale_vector(float v[4], int sx, int sy, int sz)
 	m_scale[1][1] = sy;
 	m_scale[2][2] = sz;
 	new_v = m_v__multiply(m_scale, v);
+	free_matrix(m_scale);
 	return (new_v);
 }
 
@@ -107,6 +121,7 @@ float	*rotate_x(float v[4], int angle)
 	m_rotation[2][1] = sin(r);
 	m_rotation[2][2] = cos(r);
 	new_v = m_v__multiply(m_rotation, v);
+	free_matrix(m_rotation);
 	return (new_v);
 }
 
@@ -123,6 +138,7 @@ float	*rotate_y(float v[4], int angle)
 	m_rotation[0][2] = sin(r);
 	m_rotation[2][2] = cos(r);
 	new_v = m_v__multiply(m_rotation, v);
+	free_matrix(m_rotation);
 	return (new_v);
 }
 
@@ -139,6 +155,7 @@ float	*rotate_z(float v[4], int angle)
 	m_rotation[1][0] = sin(r);
 	m_rotation[1][1] = cos(r);
 	new_v = m_v__multiply(m_rotation, v);
+	free_matrix(m_rotation);
 	return (new_v);
 }
 
@@ -165,6 +182,7 @@ float	*translate_vector(float v[4], int dx, int dy, int dz)
 	m_transl[1][3] = dy;
 	m_transl[2][3] = dz;
 	new_v = m_v__multiply(m_transl, v);
+	free_matrix(m_transl);
 	return (new_v);
 }
 
@@ -180,6 +198,9 @@ t_point	*rotate_point(t_point *old_p, int mode, int angle)
 	// new_v = rotate_vector(new_v, mode++, angle);
 	// new_v = rotate_vector(old_v, mode++, angle);
 	new_p = vector_to_point(new_v);
+	new_p->color = old_p->color;
+	free(old_v);
+	free(new_v);
 	return (new_p);
 }
 
@@ -204,6 +225,26 @@ t_point	*scale_point(t_point *old_p, int sx, int sy, int sz)
 	old_v = point_to_vector(old_p);
 	new_v = scale_vector(old_v, sx, sy, sz);
 	new_p = vector_to_point(new_v);
+	new_p->color = old_p->color;
+	free(old_v);
+	free(new_v);
+	return (new_p);
+}
+
+t_point	*translate_point(t_point *old_p, int dx, int dy, int dz)
+{
+	float	*old_v;
+	float	*new_v;
+	t_point	*new_p;
+
+	// printf("\n\nold_p %d.%d.%d	", old_p->x, old_p->y, old_p->z);
+	old_v = point_to_vector(old_p);
+	new_v = translate_vector(old_v, dx, dy, dz);
+	new_p = vector_to_point(new_v);
+	new_p->color = old_p->color;
+	// printf("\nnew_p %d.%d.%d	\n\n", new_p->x, new_p->y, new_p->z);
+	free(old_v);
+	free(new_v);
 	return (new_p);
 }
 
@@ -227,20 +268,6 @@ t_line	*rotate_line(t_line *old_line, int mode, int angle)
 	}
 	// show_line(new_line);
 	return (new_line);
-}
-
-t_point	*translate_point(t_point *old_p, int dx, int dy, int dz)
-{
-	float	*old_v;
-	float	*new_v;
-	t_point	*new_p;
-
-	// printf("\n\nold_p %d.%d.%d	", old_p->x, old_p->y, old_p->z);
-	old_v = point_to_vector(old_p);
-	new_v = translate_vector(old_v, dx, dy, dz);
-	new_p = vector_to_point(new_v);
-	// printf("\nnew_p %d.%d.%d	\n\n", new_p->x, new_p->y, new_p->z);
-	return (new_p);
 }
 
 t_line	*translate_line(t_line *old_line, int dx, int dy, int dz)
@@ -269,16 +296,25 @@ t_line	*scale_line(t_line *old_line, int sx, int sy, int sz)
 	t_point	*old;
 	t_point	*new;
 
+	// printf("scale_line 1\n");
 	new_line = malloc(sizeof(t_line));
+	// printf("scale_line 2\n");
 	new_line->next = NULL;
 	new_line->p_head = NULL;
 	old = old_line->p_head;
+	// printf("scale_line 3\n");
+	// int n = 0;
 	while (old)
 	{
+		// printf("loop n = %d, p1\n", ++n);
 		new = scale_point(old, sx, sy, sz);
+		// printf("loop n = %d, p2\n", n);
 		add_back_point(&(new_line->p_head), new);
+		// printf("loop n = %d, p3\n", n);
 		old = old->next;
+		// printf("loop n = %d, p4\n", n);
 	}
+	// printf("scale_line 5\n");
 	// show_line(new_line);
 	return (new_line);
 }
@@ -329,16 +365,25 @@ t_map	*scale_map(t_map *old_map, int sx, int sy, int sz)
 	t_line	*new_line;
 	t_line	*old_line;
 
+	// printf("scale_map start\n");
 	new_map = malloc(sizeof(t_map));
+	// printf("scale_map 1\n");
 	new_map->h = old_map->h;
 	new_map->w = old_map->w;
 	new_map->head = NULL;
 	old_line = old_map->head;
+	// printf("scale_map 2\n");
+	// int n = 0;
 	while (old_line)
 	{
+		// printf("loop 1, n = %d\n", ++n);
 		new_line = scale_line(old_line, sx, sy, sz);
+		// printf("loop 2\n");
 		add_back_line(&(new_map->head), new_line);
+		// printf("loop 3\n");
 		old_line = old_line->next;
+		// printf("loop 4\n");
 	}
+	// printf("scale_map start\n");
 	return (new_map);
 }

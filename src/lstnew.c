@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:31:29 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/10 12:27:28 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/10 20:10:55 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	check_for_coma(char *str)
 			return (1);
 		i++;
 	}
+	// printf("check_for_coma 0\n");
 	return (0);
 }
 
@@ -47,7 +48,7 @@ t_point *ft_lstnew_point(int x, int y, char *z)
 	p->next = NULL;
 	p->x = x;
 	p->y = y;
-	if (!check_for_coma(z))
+	if (check_for_coma(z) == 0)
 	{
 		p->z = ft_atoi(z);
 		p->color = WHITE;
@@ -56,6 +57,7 @@ t_point *ft_lstnew_point(int x, int y, char *z)
 	elems = ft_split(z, ',');
 	p->z = ft_atoi(elems[0]);
 	p->color = strtol(elems[1], 0, 16);
+	deep_free(elems);
 	return (p);
 }
 
@@ -70,6 +72,7 @@ t_line *ft_lstnew_line(char *str, int h, int *w)
 	i = 0;
 	line = malloc(sizeof(t_line));
 	line->p_head = NULL;
+	line->next = NULL;
 	while (vals[i])
 	{
 		add_back_point(&(line->p_head), ft_lstnew_point(i, h, vals[i]));

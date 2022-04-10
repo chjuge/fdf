@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:37:39 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/06 15:38:02 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/10 19:11:41 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	deep_free(char **strs)
 		}
 		i++;
 	}
+	free(strs[i]);
 	free(strs);
 }
 

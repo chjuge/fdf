@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:05:11 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/10 12:33:32 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/10 20:18:24 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,46 @@ t_map	*init_map()
 	return (map);
 }
 
+int	find_cnt(char *str)
+{
+	int i;
+	int cnt;
+
+	i = 0;
+	cnt = 0;
+	while (str[i])
+	{
+		if (str[i] == ' ')
+			cnt++;
+		i++;
+	}
+	return (cnt + 1);
+}
+
 t_map	*fill_t_map(char *param)
 {
 	int		fd;
 	char	*str;
 	t_map	*map;
+	t_line	*new_line;
 
 	map = init_map();
 	fd = open(param, O_RDONLY);
 	if (fd < 0)
 		return NULL;
+	// int	n = 0;
+	new_line = NULL;
 	while ((str = get_next_line(fd)))
 	{
+		// printf("reading #%d, strlen: %d\n", ++n, find_cnt(str)); 
 		str = ft_strtrim(str, "\n");
-		add_back_line(&map->head, ft_lstnew_line(str, map->h, &map->w));
+		// printf("1\n");
+		new_line = ft_lstnew_line(str, map->h, &map->w);
+		// printf("2\n");
+		add_back_line(&map->head, new_line);
+		// printf("3\n");
 		free(str);
+		// printf("4\n");
 		map->h++;
 	}
 	return(map);

@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:33:02 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/07 18:05:59 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/10 20:15:24 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,19 @@ void	add_back_line(t_line **head, t_line *new)
 {
 	t_line	*tmp;
 
+	// printf("add_back_line start\n");
 	if (!(*head))
 	{
+		// printf("add_back_line !head\n");
 		// printf("no head!\n");
 		// show_line(new);
 		// printf("--------------------------\n");
 		*head = new;
 		return ;
 	}
+	// printf("add_back_line 1\n");
 	tmp = *head;
+	// printf("add_back_line 2\n");
 	while (tmp->next)
 	{
 		// printf("---\n");
@@ -49,7 +53,9 @@ void	add_back_line(t_line **head, t_line *new)
 		// sleep(1);
 		tmp = tmp->next;
 	}
+	// printf("add_back_line 3\n");
 	tmp->next = new;
+	// printf("add_back_line end\n");
 }
 
 void	add_back_point(t_point **head, t_point *new)

@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 11:56:22 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/10 12:30:57 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/10 18:15:03 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	draw_2_lines(t_point *p[2], t_data *img)
 {
-	draw_line(p[0]->x, p[0]->y, p[0]->next->x, p[0]->next->y, img);
-	draw_line(p[0]->x, p[0]->y, p[1]->x, p[1]->y, img);
+	draw_line(p[0], p[0]->next, img);
+	draw_line(p[0], p[1], img);
 }
 
 void	draw_by_data(t_map *map, t_data *img)
@@ -23,6 +23,7 @@ void	draw_by_data(t_map *map, t_data *img)
 	t_line	*line[2];
 	t_point	*p[2];
 
+	printf("draw_by_data start\n");
 	line[0] = map->head;
 	line[1] = map->head->next;
 	while (line[0]->next)
@@ -35,16 +36,17 @@ void	draw_by_data(t_map *map, t_data *img)
 			p[0] = p[0]->next;
 			p[1] = p[1]->next;
 		}
-		draw_line(p[0]->x, p[0]->y, p[1]->x, p[1]->y, img);
+		draw_line(p[0], p[1], img);
 		line[0] = line[0]->next;
 		line[1] = line[1]->next;
 	}
 	p[0] = line[0]->p_head;
 	while (p[0]->next)
 	{
-		draw_line(p[0]->x, p[0]->y, p[0]->next->x, p[0]->next->y, img);
+		draw_line(p[0], p[0]->next, img);
 		p[0] = p[0]->next;
 	}
+	printf("draw_by_data end\n");
 }
 
 void	drawmap(t_map *map, t_data *data)
@@ -58,7 +60,7 @@ void	drawmap(t_map *map, t_data *data)
 	printf("drops 1\n");
 	draw_by_data(map, data);
 	printf("drops 1\n");
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 10, 10);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	mlx_key_hook(data->win, key_listener, data);
 	// mlx_hook(data->win, 17, 0, close_program, data);
 	mlx_hook(data->win, 17, 1L<<17, close_program, data);

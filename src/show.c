@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:34:07 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/07 23:14:29 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/10 18:16:38 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ void	show_list(t_str *list)
 	}
 }
 
+void	show_point(t_point *p)
+{
+	printf("%.1f_%.1f  ", p->x, p->y);
+}
+
 void	show_line(t_line *line)
 {
 	t_point *p = line->p_head;
@@ -35,7 +40,7 @@ void	show_line(t_line *line)
 	while (p)
 	{
 		// printf("%d.%d.%d	", p->x, p->y, p->z);
-		printf("%3f", p->z);
+		show_point(p);
 		p = p->next;
 	}
 	printf("\n");	
