@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:27:04 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/10 20:21:04 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/10 20:46:14 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void	draw_line(t_point *p1, t_point *p2, t_data *img)
 	x[1] = p2->x;
 	y[1] = p2->y;
 	
-	show_point(p1);
-	show_point(p2);
-	printf("\n");
+	// show_point(p1);
+	// show_point(p2);
+	// printf("\n");
 	delta[0] = abs(x[1] - x[0]);
 	delta[1] = abs(y[1] - y[0]);
 	sign[0] = find_sign(x[0], x[1]);
