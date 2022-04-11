@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:31:29 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/10 20:10:55 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/11 13:51:41 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,24 +61,43 @@ t_point *ft_lstnew_point(int x, int y, char *z)
 	return (p);
 }
 
-t_line *ft_lstnew_line(char *str, int h, int *w)
+t_line	*init_new_line()
+{
+	t_line	*line;
+
+	line = malloc(sizeof(t_line));
+	line->p_head = NULL;
+	line->next = NULL;
+	line->max = 0;
+	line->min = 0;
+	return (line);
+}
+
+void	set_max_min_l(t_line *line, t_point *new)
+{
+	if (line->max < new->z)
+		line->max = new->z;
+	else if (line->min > new->z)
+		line->min = new->z;
+}
+
+t_line	*ft_lstnew_line(char *str, int h, int *w)
 {
 	char	**vals;
 	int		i;
 	t_line	*line;
+	t_point	*new;
 
+	line = init_new_line();
 	vals = ft_split(str, ' ');
-	// printf("str in line gen:	'%s'\n", str);
 	i = 0;
-	line = malloc(sizeof(t_line));
-	line->p_head = NULL;
-	line->next = NULL;
 	while (vals[i])
 	{
-		add_back_point(&(line->p_head), ft_lstnew_point(i, h, vals[i]));
+		new = ft_lstnew_point(i, h, vals[i]);
+		add_back_point(&(line->p_head), new);
+		set_max_min_l(line, new);
 		i++;
 	}
-	// printf("%p\n", line);
 	deep_free(vals);
 	if (*w == 0)
 		*w = i;

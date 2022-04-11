@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 11:56:22 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/10 20:47:39 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/11 16:44:30 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	drawmap(t_map *map, t_data *data)
 {
 	data->mlx = mlx_init();
 	// show_map(map);
-	data->win = mlx_new_window(data->mlx, 1920, 1080, "Hello world!");
-	data->img = mlx_new_image(data->mlx, 1920, 1080);
+	data->win = mlx_new_window(data->mlx, data->w, data->h, "Hello world!");
+	data->img = mlx_new_image(data->mlx, data->w, data->h);
 	data->mlx_addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length,
 								&data->endian);
 	// printf("drops 1\n");

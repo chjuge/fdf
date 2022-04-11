@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:05:11 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/10 20:18:24 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/11 13:58:56 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,14 @@ int	find_cnt(char *str)
 	return (cnt + 1);
 }
 
+void	set_max_min_m(t_map *map, t_line *new_line)
+{
+	if (map->max < new_line->max)
+		map->max = new_line->max;
+	if (map->min > new_line->min)
+		map->min = new_line->min;
+}
+
 t_map	*fill_t_map(char *param)
 {
 	int		fd;
@@ -71,7 +79,6 @@ t_map	*fill_t_map(char *param)
 	fd = open(param, O_RDONLY);
 	if (fd < 0)
 		return NULL;
-	// int	n = 0;
 	new_line = NULL;
 	while ((str = get_next_line(fd)))
 	{
@@ -81,7 +88,7 @@ t_map	*fill_t_map(char *param)
 		new_line = ft_lstnew_line(str, map->h, &map->w);
 		// printf("2\n");
 		add_back_line(&map->head, new_line);
-		// printf("3\n");
+		set_max_min_m(map, new_line);
 		free(str);
 		// printf("4\n");
 		map->h++;

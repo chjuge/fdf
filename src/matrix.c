@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 12:55:19 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/10 20:18:47 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/11 17:41:42 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ float	rad(int angle)
 {
 	float	rad;
 
+	while (angle > 360)
+		angle -= 360;
 	rad = M_PI / 180 * angle;
 	return (rad);
 }
@@ -67,6 +69,31 @@ float	*m_v__multiply(float **m, float *v)
 	n_v[2] = m[2][0] * v[0] + m[2][1] * v[1] + m[2][2] * v[2] + m[2][3] * v[3];
 	n_v[3] = m[3][0] * v[0] + m[3][1] * v[1] + m[3][2] * v[2] + m[3][3] * v[3];
 	return (n_v);
+}
+
+float	**m_m_multiply(float **a, float **b)
+{
+	int	i;
+	int	j;
+	float	**m;
+
+	i = 0;
+	m = malloc(sizeof(float*) * 4);
+	while (i < 4)
+	{
+		m[i] = malloc(sizeof(float) * 4);
+		j = 0;
+		while (j < 4)
+		{
+			m[i][j] = a[i][0] * b[0][j] +
+			a[i][1] * b[1][j] +
+			a[i][2] * b[2][j] +
+			a[i][3] * b[3][j];
+			j++;
+		}
+		i++;	
+	}
+	return (m);
 }
 
 float	**fill_identity_m()

@@ -38,6 +38,8 @@ typedef struct	s_line
 {
 	struct s_line	*next;
 	t_point			*p_head;
+	float			min;
+	float			max;
 }	t_line;
 
 typedef struct	s_map
@@ -45,6 +47,8 @@ typedef struct	s_map
 	t_line	*head;
 	int		w;
 	int		h;
+	float	min;
+	float	max;
 }	t_map;
 
 typedef struct	s_data {
@@ -56,6 +60,8 @@ typedef struct	s_data {
 	int		line_length;
 	int		endian;
 	t_map	*map;
+	int		w;
+	int		h;
 }				t_data;
 
 char	*get_next_line(int fd);
