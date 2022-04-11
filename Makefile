@@ -20,11 +20,17 @@ SRCS	=	$(DIR)/create_new_remainder.c \
 			$(DIR)/add_back.c \
 			$(DIR)/show.c \
 			$(DIR)/find_lines_count.c \
-			$(DIR)/deep_free.c \
-			$(DIR)/set_array.c \
+			$(DIR)/free.c \
 			$(DIR)/drawmap.c \
 			$(DIR)/matrix.c \
-			$(DIR)/key_listener.c
+			$(DIR)/key_listener.c \
+			$(DIR)/change.c \
+			$(DIR)/get_matrix.c \
+			$(DIR)/rotate_xyz.c \
+			$(DIR)/math_rotate.c \
+			$(DIR)/math_scale.c \
+			$(DIR)/math_translate.c \
+			$(DIR)/point_vector.c
 
 OBJS	= 	$(SRCS:.c=.o)
 

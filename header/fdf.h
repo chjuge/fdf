@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/11 18:55:16 by mproveme          #+#    #+#             */
+/*   Updated: 2022/04/11 18:59:10 by mproveme         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FDF_H
 # define FDF_H
 
@@ -17,13 +29,6 @@
 // # include <mlx.h>
 # include "../minilibx-linux/mlx.h"
 # define WHITE 0xffffff
-
-typedef struct	s_str
-{
-	struct s_str	*next;
-	int				*arr;
-	int				len;
-}	t_str;
 
 typedef struct	s_point
 {
@@ -50,6 +55,20 @@ typedef struct	s_map
 	float	min;
 	float	max;
 }	t_map;
+
+typedef	struct s_bases
+{
+	int	r_x;
+	int	r_y;
+	int	r_z;
+	int	s_x;
+	int	s_y;
+	int	s_z;
+	int	t_x;
+	int	t_y;
+	int	t_z;
+}	t_bases;
+
 
 typedef struct	s_data {
 	void	*mlx;
@@ -84,12 +103,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	draw_line(t_point *p1, t_point *p2, t_data *img);
 
 
-
-t_str	*ft_lstnew(char *str);
-void	add_back(t_str **head, t_str *new);
-
-void	show_array(int *arr, int len);
-void	show_list(t_str *list);
 void	show_map(t_map *map);
 void	show_line(t_line *line);
 void	show_point(t_point *p);
@@ -110,7 +123,6 @@ void	drawmap(t_map *map, t_data *img);
 float	*point_to_vector(t_point *p);
 t_point *vector_to_point(float vec[4]);
 float	*m_v__multiply(float **m, float *v);
-float	**fill_identity_m();
 float	*translate_vector(float v[4], int dx, int dy, int dz);
 t_point	*translate_point(t_point *old_p, int dx, int dy, int dz);
 t_line	*translate_line(t_line *old_line, int dx, int dy, int dz);
@@ -121,5 +133,25 @@ t_map	*rotate_map(t_map *old_map, int mode, int angle);
 
 int	key_listener(int key, t_data *data);
 int	close_program(t_data *data);
+
+
+void	change_rotation(int k, t_data *data);
+void	change_translation(int k, t_data *data);
+void	change_scale(int k, t_data *data);
+
+float	**fill_m1();
+void	free_matrix(float **m);
+float	**get_m_rotate_x(int angle);
+float	**get_m_rotate_y(int angle);
+float	**get_m_rotate_z(int angle);
+float	**get_m_scale(int sx, int sy, int sz);
+float	**get_m_translate(int dx, int dy, int dz);
+
+float	rad(int angle);
+
+float	*rotate_x(float v[4], int angle);
+float	*rotate_y(float v[4], int angle);
+float	*rotate_z(float v[4], int angle);
+float	*rotate_vector(float v[4], int mode, int angle);
 
 #endif

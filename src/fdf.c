@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 23:09:13 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 17:50:44 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/11 19:04:20 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ int	get_translation(t_map *map, int w)
 
 int	my_ceil(int scale, int count)
 {
-
 	return (floor(scale/count) + 1);
-	
 }
 
 int	get_scale_z(t_map	*map)

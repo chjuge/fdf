@@ -6,23 +6,11 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:31:29 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 13:51:41 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/11 19:01:58 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
-
-t_str	*ft_lstnew(char *str)
-{
-	t_str	*new_el;
-
-	new_el = malloc(sizeof(t_str));
-	if (!new_el)
-		return (0);
-	new_el->arr = set_array(str, &new_el->len);
-	new_el->next = NULL;
-	return (new_el);
-}
 
 int	check_for_coma(char *str)
 {
@@ -35,7 +23,6 @@ int	check_for_coma(char *str)
 			return (1);
 		i++;
 	}
-	// printf("check_for_coma 0\n");
 	return (0);
 }
 

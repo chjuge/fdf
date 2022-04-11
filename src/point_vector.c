@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_array.c                                        :+:      :+:    :+:   */
+/*   point_vector.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 15:37:19 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/06 15:37:56 by mproveme         ###   ########.fr       */
+/*   Created: 2022/04/11 18:55:08 by mproveme          #+#    #+#             */
+/*   Updated: 2022/04/11 18:55:57 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
 
-int	*set_array(char *str, int *len)
+float	*point_to_vector(t_point *p)
 {
-	char	**vals;
-	int		i;
-	int		*arr;
+	float	*vector;
 
-	vals = ft_split(str, ' ');
-	*len = find_lines_count(vals);
-	arr = malloc(sizeof(int) * (*len));
-	i = 0;
-	while (i < *len)
-	{
-		arr[i] = ft_atoi(vals[i]);
-		i++;
-	}
-	deep_free(vals);
-	return (arr);
+	vector = malloc(sizeof(float) * 4);
+	vector[0] = p->x;
+	vector[1] = p->y;
+	vector[2] = p->z;
+	vector[3] = 1;
+	return (vector);
+}
+
+t_point *vector_to_point(float vec[4])
+{
+	t_point	*p;
+
+	p = malloc(sizeof(t_point));
+	p->next = NULL;
+	p->x = vec[0];
+	p->y = vec[1];
+	p->z = vec[2];
+	return (p);
 }
