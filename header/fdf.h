@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:55:16 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 19:27:11 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:51:13 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef struct	s_data {
 	int		endian;
 	t_map	*map;
 	t_state	*state;
+	float	**state_m;
 	int		w;
 	int		h;
 }				t_data;
@@ -124,7 +125,7 @@ void	drawmap(t_map *map, t_data *img);
 float	*point_to_vector(t_point *p);
 t_point *vector_to_point(float vec[4]);
 float	*m_v__multiply(float **m, float *v);
-float	**m_m_multiply(float **a, float **b);
+float	**m_m_multiply(float **a, float **b, int mode);
 float	*translate_vector(float v[4], int dx, int dy, int dz);
 t_point	*translate_point(t_point *old_p, int dx, int dy, int dz);
 t_line	*translate_line(t_line *old_line, int dx, int dy, int dz);
@@ -161,5 +162,17 @@ t_state *init_state();
 t_map	*init_map();
 t_line	*init_line();
 t_point	*init_point();
+
+float	**state_matrix(t_state *s);
+
+float	*instance_vector(float v[4], float **m_state);
+t_point	*instance_point(t_point *old_p, float **m_state);
+t_line	*instance_line(t_line *old_line, float **m_state);
+t_map	*instance_map(t_map	*old_map, float	**m_state);
+
+int	my_ceil(int scale, int count);
+int	get_scale_z(t_map	*map);
+
+t_state	*base_state(t_data *data, t_map *map);
 
 #endif

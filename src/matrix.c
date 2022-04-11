@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 12:55:19 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 18:55:52 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:05:59 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ float	*m_v__multiply(float **m, float *v)
 	return (n_v);
 }
 
-float	**m_m_multiply(float **a, float **b)
+float	**m_m_multiply(float **a, float **b, int mode)
 {
 	int	i;
 	int	j;
@@ -49,13 +49,16 @@ float	**m_m_multiply(float **a, float **b)
 		j = 0;
 		while (j < 4)
 		{
-			m[i][j] = a[i][0] * b[0][j] +
-			a[i][1] * b[1][j] +
-			a[i][2] * b[2][j] +
-			a[i][3] * b[3][j];
+			m[i][j] = a[i][0] * b[0][j] + a[i][1] * b[1][j]
+					+ a[i][2] * b[2][j] + a[i][3] * b[3][j];
 			j++;
 		}
 		i++;	
+	}
+	if (mode)
+	{
+		free_matrix(a);
+		free_matrix(b);
 	}
 	return (m);
 }

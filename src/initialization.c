@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 19:19:23 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 19:29:34 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:47:28 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,18 @@ t_state *init_state()
 	s->t_x= 0;
 	s->t_y= 0;
 	s->t_z= 0;
+	return (s);
+}
+
+t_state	*base_state(t_data *data, t_map *map)
+{
+	t_state	*s;
+
+	s = init_state();
+	s->s_x = my_ceil(data->w, data->map->w)/2;
+	s->s_y = my_ceil(data->h, data->map->h)/2;
+	s->s_z = get_scale_z(map);
+	s->r_x = 45;
+	s->r_y = 45;
 	return (s);
 }

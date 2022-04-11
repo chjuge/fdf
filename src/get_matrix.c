@@ -6,11 +6,22 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:20:33 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 18:35:19 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/11 19:45:37 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
+
+float	**get_m_scale(int sx, int sy, int sz)
+{
+	float	**m1;
+
+	m1 = fill_m1();
+	m1[0][0] = sx;
+	m1[1][1] = sy;
+	m1[2][2] = sz;
+	return (m1);
+}
 
 float	**get_m_rotate_x(int angle)
 {
@@ -51,17 +62,6 @@ float	**get_m_rotate_z(int angle)
 	m1[0][1] = -sin(r);
 	m1[1][0] = sin(r);
 	m1[1][1] = cos(r);
-	return (m1);
-}
-
-float	**get_m_scale(int sx, int sy, int sz)
-{
-	float	**m1;
-
-	m1 = fill_m1();
-	m1[0][0] = sx;
-	m1[1][1] = sy;
-	m1[2][2] = sz;
 	return (m1);
 }
 
