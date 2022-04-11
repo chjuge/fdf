@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:47:15 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 18:54:15 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/11 19:37:33 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,7 @@ t_line	*rotate_line(t_line *old_line, int mode, int angle)
 	t_point	*old;
 	t_point	*new;
 
-	new_line = malloc(sizeof(t_line));
-	new_line->next = NULL;
-	new_line->p_head = NULL;
+	new_line = init_line();
 	old = old_line->p_head;
 	while (old)
 	{
@@ -65,10 +63,9 @@ t_map	*rotate_map(t_map *old_map, int mode, int angle)
 	t_line	*new_line;
 	t_line	*old_line;
 
-	new_map = malloc(sizeof(t_map));
+	new_map = init_map();
 	new_map->h = old_map->h;
 	new_map->w = old_map->w;
-	new_map->head = NULL;
 	old_line = old_map->head;
 	while (old_line)
 	{

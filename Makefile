@@ -30,7 +30,8 @@ SRCS	=	$(DIR)/create_new_remainder.c \
 			$(DIR)/math_rotate.c \
 			$(DIR)/math_scale.c \
 			$(DIR)/math_translate.c \
-			$(DIR)/point_vector.c
+			$(DIR)/point_vector.c \
+			$(DIR)/initialization.c
 
 OBJS	= 	$(SRCS:.c=.o)
 

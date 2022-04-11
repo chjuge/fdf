@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:55:16 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 18:59:10 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/11 19:27:11 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,18 @@ typedef struct	s_map
 	float	max;
 }	t_map;
 
-typedef	struct s_bases
+typedef	struct s_state
 {
-	int	r_x;
-	int	r_y;
-	int	r_z;
 	int	s_x;
 	int	s_y;
 	int	s_z;
+	int	r_x;
+	int	r_y;
+	int	r_z;
 	int	t_x;
 	int	t_y;
 	int	t_z;
-}	t_bases;
+}	t_state;
 
 
 typedef struct	s_data {
@@ -79,6 +79,7 @@ typedef struct	s_data {
 	int		line_length;
 	int		endian;
 	t_map	*map;
+	t_state	*state;
 	int		w;
 	int		h;
 }				t_data;
@@ -116,13 +117,14 @@ void	add_back_line(t_line **head, t_line *new);
 void	add_back_point(t_point **head, t_point *new);
 t_line	*ft_lstnew_line(char *str, int h, int *w);
 t_point	*ft_lstnew_point(int x, int y, char *z);
-t_map	*fill_t_map(char *param);
+t_map	*fill_map(char *param);
 
 void	drawmap(t_map *map, t_data *img);
 
 float	*point_to_vector(t_point *p);
 t_point *vector_to_point(float vec[4]);
 float	*m_v__multiply(float **m, float *v);
+float	**m_m_multiply(float **a, float **b);
 float	*translate_vector(float v[4], int dx, int dy, int dz);
 t_point	*translate_point(t_point *old_p, int dx, int dy, int dz);
 t_line	*translate_line(t_line *old_line, int dx, int dy, int dz);
@@ -153,5 +155,11 @@ float	*rotate_x(float v[4], int angle);
 float	*rotate_y(float v[4], int angle);
 float	*rotate_z(float v[4], int angle);
 float	*rotate_vector(float v[4], int mode, int angle);
+
+
+t_state *init_state();
+t_map	*init_map();
+t_line	*init_line();
+t_point	*init_point();
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:31:29 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 19:01:58 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/11 19:32:40 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,33 +31,16 @@ t_point *ft_lstnew_point(int x, int y, char *z)
 	t_point	*p;
 	char	**elems;
 
-	p = malloc(sizeof(t_point));
-	p->next = NULL;
+	p = init_point();
 	p->x = x;
 	p->y = y;
+	p->z = ft_atoi(z);
 	if (check_for_coma(z) == 0)
-	{
-		p->z = ft_atoi(z);
-		p->color = WHITE;
 		return (p);
-	}
 	elems = ft_split(z, ',');
-	p->z = ft_atoi(elems[0]);
 	p->color = strtol(elems[1], 0, 16);
 	deep_free(elems);
 	return (p);
-}
-
-t_line	*init_new_line()
-{
-	t_line	*line;
-
-	line = malloc(sizeof(t_line));
-	line->p_head = NULL;
-	line->next = NULL;
-	line->max = 0;
-	line->min = 0;
-	return (line);
 }
 
 void	set_max_min_l(t_line *line, t_point *new)
@@ -75,7 +58,7 @@ t_line	*ft_lstnew_line(char *str, int h, int *w)
 	t_line	*line;
 	t_point	*new;
 
-	line = init_new_line();
+	line = init_line();
 	vals = ft_split(str, ' ');
 	i = 0;
 	while (vals[i])

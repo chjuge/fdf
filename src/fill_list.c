@@ -6,22 +6,11 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:05:11 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 19:03:53 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/11 19:28:28 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
-
-t_map	*init_map()
-{
-	t_map	*map;
-
-	map = malloc(sizeof(t_map));
-	map->w = 0;
-	map->h = 0;
-	map->head = NULL;
-	return (map);
-}
 
 int	find_cnt(char *str)
 {
@@ -47,7 +36,7 @@ void	set_max_min_m(t_map *map, t_line *new_line)
 		map->min = new_line->min;
 }
 
-t_map	*fill_t_map(char *param)
+t_map	*fill_map(char *param)
 {
 	int		fd;
 	char	*str;
@@ -61,15 +50,11 @@ t_map	*fill_t_map(char *param)
 	new_line = NULL;
 	while ((str = get_next_line(fd)))
 	{
-		// printf("reading #%d, strlen: %d\n", ++n, find_cnt(str)); 
 		str = ft_strtrim(str, "\n");
-		// printf("1\n");
 		new_line = ft_lstnew_line(str, map->h, &map->w);
-		// printf("2\n");
 		add_back_line(&map->head, new_line);
 		set_max_min_m(map, new_line);
 		free(str);
-		// printf("4\n");
 		map->h++;
 	}
 	return(map);
