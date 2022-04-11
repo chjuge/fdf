@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 22:49:05 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 20:36:43 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/11 21:23:33 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	get_scale_z(t_map	*map)
 			scale *= 25;
 		else if (scale < 6)
 			scale *= 5;
-		else if (scale < 11)
+		else if (scale < 10)
 			scale *= 2;
 		else
 			scale /= 2;

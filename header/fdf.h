@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:55:16 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 20:51:13 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/11 21:49:28 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,10 +165,10 @@ t_point	*init_point();
 
 float	**state_matrix(t_state *s);
 
-float	*instance_vector(float v[4], float **m_state);
-t_point	*instance_point(t_point *old_p, float **m_state);
-t_line	*instance_line(t_line *old_line, float **m_state);
-t_map	*instance_map(t_map	*old_map, float	**m_state);
+float	*instance_vector(float v[4], float **m_state, int x, int y);
+t_point	*instance_point(t_point *old_p, float **m_state, int x, int y);
+t_line	*instance_line(t_line *old_line, float **m_state, int x, int y);
+t_map	*instance_map(t_map	*old_map, float	**m_state, int x, int y);
 
 int	my_ceil(int scale, int count);
 int	get_scale_z(t_map	*map);
