@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:12:55 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/12 12:40:28 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 15:46:22 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,21 @@ void	change_translation(int k, t_data *data)
 }
 void	change_scale(int k, t_data *data)
 {
-	int	s;
+	int	sx;
+	int	sy;
 
-	s = 2;
-		if (k == 107)
-		data->state->t_x /= s;
+	sx = my_ceil(my_ceil(data->w, data->map->w), 30);
+	sy = my_ceil(my_ceil(data->h, data->map->h), 30);
+	if (k == 107)
+	{
+		data->state->s_x -= sx;
+		data->state->s_y -= sy;
+	}
 	else if (k == 108)
-		data->state->t_x *= s;
+	{
+		data->state->s_x += sx;
+		data->state->s_y += sy;
+	}
 	redraw(data);
 	printf("change_s\n");
 }
