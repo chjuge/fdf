@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 17:57:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/12 12:34:40 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 16:06:36 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	close_program(t_data *data)
 {
 	mlx_destroy_image(data->mlx, data->img);
 	mlx_destroy_window(data->mlx, data->win);
+	free_map(data->map);
+	free(data->state);
 	return (0);
 }
 
