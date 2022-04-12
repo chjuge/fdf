@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:05:11 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 19:28:28 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:32:24 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	find_cnt(char *str)
 {
-	int i;
-	int cnt;
+	int	i;
+	int	cnt;
 
 	i = 0;
 	cnt = 0;
@@ -46,9 +46,10 @@ t_map	*fill_map(char *param)
 	map = init_map();
 	fd = open(param, O_RDONLY);
 	if (fd < 0)
-		return NULL;
+		return (NULL);
 	new_line = NULL;
-	while ((str = get_next_line(fd)))
+	str = get_next_line(fd);
+	while (str)
 	{
 		str = ft_strtrim(str, "\n");
 		new_line = ft_lstnew_line(str, map->h, &map->w);
@@ -56,6 +57,7 @@ t_map	*fill_map(char *param)
 		set_max_min_m(map, new_line);
 		free(str);
 		map->h++;
+		str = get_next_line(fd);
 	}
-	return(map);
+	return (map);
 }

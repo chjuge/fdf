@@ -6,13 +6,13 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 19:19:23 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/12 11:53:32 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:05:57 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
 
-t_point	*init_point()
+t_point	*init_point(void)
 {
 	t_point	*p;
 
@@ -25,7 +25,7 @@ t_point	*init_point()
 	return (p);
 }
 
-t_line	*init_line()
+t_line	*init_line(void)
 {
 	t_line	*line;
 
@@ -37,7 +37,7 @@ t_line	*init_line()
 	return (line);
 }
 
-t_map	*init_map()
+t_map	*init_map(void)
 {
 	t_map	*map;
 
@@ -50,20 +50,20 @@ t_map	*init_map()
 	return (map);
 }
 
-t_state *init_state()
+t_state	*init_state(void)
 {
 	t_state	*s;
 
 	s = malloc(sizeof(t_state));
-	s->r_x= 0;
-	s->r_y= 0;
-	s->r_z= 0;
-	s->s_x= 0;
-	s->s_y= 0;
-	s->s_z= 0;
-	s->t_x= 0;
-	s->t_y= 0;
-	s->t_z= 0;
+	s->r_x = 0;
+	s->r_y = 0;
+	s->r_z = 0;
+	s->s_x = 0;
+	s->s_y = 0;
+	s->s_z = 0;
+	s->t_x = 0;
+	s->t_y = 0;
+	s->t_z = 0;
 	return (s);
 }
 
@@ -75,10 +75,10 @@ t_state	*base_state(t_data *data, t_map *map)
 	s->r_x = 35;
 	s->r_y = -10;
 	s->r_z = 0;
-	s->s_x = my_ceil(data->w, data->map->w)/2;
-	s->s_y = my_ceil(data->h, data->map->h)/2;
+	s->s_x = my_ceil(data->w, data->map->w) / 2;
+	s->s_y = my_ceil(data->h, data->map->h) / 2;
 	s->s_z = get_scale_z(map);
-	s->t_x = data->w/5;
-	s->t_y = data->h/3;
+	s->t_x = data->w / 5;
+	s->t_y = data->h / 3;
 	return (s);
 }

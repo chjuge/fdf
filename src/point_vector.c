@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:55:08 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 21:20:37 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:32:34 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ float	*point_to_vector(t_point *p)
 	return (vector);
 }
 
-t_point *vector_to_point(float vec[4])
+t_point	*vector_to_point(float vec[4])
 {
 	t_point	*p;
 

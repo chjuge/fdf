@@ -6,15 +6,15 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:31:29 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/12 17:09:20 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:36:51 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
 
-int	check_for_coma(char *str)
+static int	check_for_coma(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -26,45 +26,7 @@ int	check_for_coma(char *str)
 	return (0);
 }
 
-int	my_pow(int x, int y)
-{
-	int	res;
-
-	if (y == 0)
-		return (1);
-	if (y == 1)
-		return (x);
-	res = x;
-	while (y > 1)
-	{
-		res *= x;
-		y--;
-	}
-	return (res);
-}
-
-int	get_color(char *str)
-{
-	int	len;
-	int i;
-	int res;
-
-	i = 0;
-	len = ft_strlen(str);
-	res = 0;
-	while (len > 2)
-	{
-		if (ft_isalpha(str[len - 1]))
-			res +=  (ft_tolower(str[len - 1]) - 87) * my_pow(16, i);
-		else
-			res += (str[len - 1] - '0') * my_pow(16, i);
-		len--;
-		i++;
-	}
-	return (res);
-}
-
-t_point *ft_lstnew_point(int x, int y, char *z)
+t_point	*ft_lstnew_point(int x, int y, char *z)
 {
 	t_point	*p;
 	char	**elems;
@@ -76,14 +38,12 @@ t_point *ft_lstnew_point(int x, int y, char *z)
 	if (check_for_coma(z) == 0)
 		return (p);
 	elems = ft_split(z, ',');
-	// p->color = strtol(elems[1], 0, 16);
 	p->color = get_color(elems[1]);
-	printf("ecpected	16711680\nvalue		%d\n", p->color);
 	deep_free(elems);
 	return (p);
 }
 
-void	set_max_min_l(t_line *line, t_point *new)
+static void	set_max_min_l(t_line *line, t_point *new)
 {
 	if (line->max < new->z)
 		line->max = new->z;
@@ -113,10 +73,8 @@ t_line	*ft_lstnew_line(char *str, int h, int *w)
 		*w = i;
 	if (*w != i)
 	{
-		// deep_free_1();
 		printf("daite pravil'nuyu kartu, pidary\n");
 		return (NULL);
 	}
 	return (line);
 }
-

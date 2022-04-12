@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:40:14 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 18:54:08 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:33:15 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,3 @@ float	*rotate_z(float v[4], int angle)
 	free_matrix(m_rotation);
 	return (new_v);
 }
-

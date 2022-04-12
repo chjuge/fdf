@@ -6,12 +6,11 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 12:55:19 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 20:05:59 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:09:38 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
-
 
 float	rad(int angle)
 {
@@ -37,12 +36,12 @@ float	*m_v__multiply(float **m, float *v)
 
 float	**m_m_multiply(float **a, float **b, int mode)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	float	**m;
 
 	i = 0;
-	m = malloc(sizeof(float*) * 4);
+	m = malloc(sizeof(float *) * 4);
 	while (i < 4)
 	{
 		m[i] = malloc(sizeof(float) * 4);
@@ -50,10 +49,10 @@ float	**m_m_multiply(float **a, float **b, int mode)
 		while (j < 4)
 		{
 			m[i][j] = a[i][0] * b[0][j] + a[i][1] * b[1][j]
-					+ a[i][2] * b[2][j] + a[i][3] * b[3][j];
+				+ a[i][2] * b[2][j] + a[i][3] * b[3][j];
 			j++;
 		}
-		i++;	
+		i++;
 	}
 	if (mode)
 	{
@@ -63,14 +62,14 @@ float	**m_m_multiply(float **a, float **b, int mode)
 	return (m);
 }
 
-float	**fill_m1()
+float	**fill_m1(void)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	float	**m;
 
 	i = 0;
-	m = malloc(sizeof(float*) * 4);
+	m = malloc(sizeof(float *) * 4);
 	while (i < 4)
 	{
 		j = 0;

@@ -1,44 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   show.c                                             :+:      :+:    :+:   */
+/*   my_mlx_pixel_put.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 15:34:07 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 18:59:01 by mproveme         ###   ########.fr       */
+/*   Created: 2022/04/12 18:55:18 by mproveme          #+#    #+#             */
+/*   Updated: 2022/04/12 18:57:44 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
 
-void	show_point(t_point *p)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	printf("%.1f_%.1f  ", p->x, p->y);
-}
+	char	*dst;
 
-void	show_line(t_line *line)
-{
-	t_point *p = line->p_head;
-
-	while (p)
-	{
-		// printf("%d.%d.%d	", p->x, p->y, p->z);
-		show_point(p);
-		p = p->next;
-	}
-	printf("\n");	
-}
-
-void	show_map(t_map *map)
-{
-	t_line	*tmp;
-	
-	tmp = map->head;
-	while (tmp)
-	{
-		// printf("'%p'\n", tmp);
-		show_line(tmp);
-		tmp = tmp->next;
-	}
+	while (x < 0)
+		x += data->w;
+	while (x >= data->w)
+		x -= data->w;
+	while (y < 0)
+		y += data->h;
+	while (y >= data->h)
+		y -= data->h;
+	dst = data->mlx_addr + (y * data->line_length + x
+			* (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

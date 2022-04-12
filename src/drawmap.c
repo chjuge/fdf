@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 11:56:22 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/12 16:02:42 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:23:20 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,16 @@ void	draw_by_data(t_map *map, t_data *img)
 
 void	drawmap(t_data *data)
 {
-	t_map *map;
+	t_map	*map;
 
 	data->state_m = state_matrix(data->state);
-	map = instance_map(data->map, data->state_m, data->state->t_x, data->state->t_y);
-	
+	map = instance_map(data->map, data->state_m,
+			data->state->t_x, data->state->t_y);
 	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, data->w, data->h, "Hello world!");
-	
+	data->win = mlx_new_window(data->mlx, data->w, data->h, "fdf");
 	data->img = mlx_new_image(data->mlx, data->w, data->h);
-	data->mlx_addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length,
-								&data->endian);
+	data->mlx_addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
+			&data->line_length, &data->endian);
 	draw_by_data(map, data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	free_map(map);
@@ -67,16 +66,15 @@ void	drawmap(t_data *data)
 
 void	redraw(t_data *data)
 {
-	t_map *map;
-
+	t_map	*map;
 
 	data->state_m = state_matrix(data->state);
-	map = instance_map(data->map, data->state_m, data->state->t_x, data->state->t_y);
-
+	map = instance_map(data->map, data->state_m,
+			data->state->t_x, data->state->t_y);
 	mlx_destroy_image(data->mlx, data->img);
 	data->img = mlx_new_image(data->mlx, data->w, data->h);
-	data->mlx_addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length,
-								&data->endian);
+	data->mlx_addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
+			&data->line_length, &data->endian);
 	draw_by_data(map, data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	free_map(map);

@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:37:39 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/12 16:02:27 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:24:06 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	deep_free(char **strs)
 void	free_matrix(float **m)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < 4)
 	{
@@ -53,7 +53,7 @@ void	free_line(t_line *line)
 	while (p)
 	{
 		tmp = p;
-		p=p->next;
+		p = p->next;
 		free(tmp);
 	}
 	free(line);

@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:12:55 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/12 15:46:22 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 19:02:10 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ void	change_rotation(int k, t_data *data)
 	else if (k == 120)
 		data->state->r_z += r;
 	redraw(data);
-	printf("change_r\n");
 }
+
 void	change_translation(int k, t_data *data)
 {
 	int	t;
 
 	t = 5;
-		if (k == 65361)
+	if (k == 65361)
 		data->state->t_x -= t;
 	else if (k == 65363)
 		data->state->t_x += t;
@@ -45,9 +45,9 @@ void	change_translation(int k, t_data *data)
 		data->state->t_y -= t;
 	else if (k == 65364)
 		data->state->t_y += t;
-	printf("change_t\n");
 	redraw(data);
 }
+
 void	change_scale(int k, t_data *data)
 {
 	int	sx;
@@ -66,13 +66,11 @@ void	change_scale(int k, t_data *data)
 		data->state->s_y += sy;
 	}
 	redraw(data);
-	printf("change_s\n");
 }
 
 void	clear_state(t_data *data)
 {
 	free(data->state);
 	data->state = base_state(data, data->map);
-	printf("clear_state\n");
 	redraw(data);
 }

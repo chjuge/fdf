@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 20:17:05 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 21:49:11 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:11:46 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ float	*instance_vector(float v[4], float **m_state, int x, int y)
 	new_v[1] += y;
 	return (new_v);
 }
+
 t_point	*instance_point(t_point *old_p, float **m_state, int x, int y)
 {
 	float	*old_v;
@@ -52,6 +53,7 @@ t_line	*instance_line(t_line *old_line, float **m_state, int x, int y)
 	}
 	return (new_line);
 }
+
 t_map	*instance_map(t_map	*old_map, float	**m_state, int x, int y)
 {
 	t_map	*new_map;

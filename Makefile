@@ -6,7 +6,8 @@ SRCS	=	$(DIR)/create_new_remainder.c \
 			$(DIR)/find_len_next_line.c \
 			$(DIR)/get_next_line.c \
 			$(DIR)/read_file_gnl.c \
-			$(DIR)/utils.c \
+			$(DIR)/utils1.c \
+			$(DIR)/utils2.c \
 			$(DIR)/fdf.c \
 			$(DIR)/fill_list.c \
 			$(DIR)/ft_atoi.c \
@@ -18,7 +19,6 @@ SRCS	=	$(DIR)/create_new_remainder.c \
 			$(DIR)/draw_line.c \
 			$(DIR)/lstnew.c \
 			$(DIR)/add_back.c \
-			$(DIR)/show.c \
 			$(DIR)/find_lines_count.c \
 			$(DIR)/free.c \
 			$(DIR)/drawmap.c \
@@ -33,7 +33,8 @@ SRCS	=	$(DIR)/create_new_remainder.c \
 			$(DIR)/point_vector.c \
 			$(DIR)/initialization.c \
 			$(DIR)/state_matrix.c \
-			$(DIR)/instance.c
+			$(DIR)/instance.c \
+			$(DIR)/my_mlx_pixel_put.c 
 
 OBJS	= 	$(SRCS:.c=.o)
 
