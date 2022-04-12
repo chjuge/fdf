@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   deep_free.c                                        :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:37:39 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 18:42:49 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 12:22:28 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,34 @@ void	free_matrix(float **m)
 		i++;
 	}
 	free(m);
+}
+
+void	free_line(t_line *line)
+{
+	t_point	*p;
+	t_point	*tmp;
+
+	p = line->p_head;
+	while (p)
+	{
+		tmp = p;
+		p=p->next;
+		free(tmp);
+	}
+	free(line);
+}
+
+void	free_map(t_map *map)
+{
+	t_line	*line;
+	t_line	*tmp;
+
+	line = map->head;
+	while (line)
+	{
+		tmp = line;
+		line = line->next;
+		free_line(tmp);
+	}
+	free(map);
 }

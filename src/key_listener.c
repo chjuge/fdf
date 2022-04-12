@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 17:57:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 18:35:51 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 12:34:40 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	check_for_translation(int k)
 
 int	check_for_scale(int k)
 {
-	if (k == 91
-	|| k == 93)
+	if (k == 107
+	|| k == 108)
 		return (1);
 	return (0);	
 }
@@ -53,13 +53,13 @@ int	key_listener(int k, t_data *data)
 	printf("%d\n", k);
 	if (k == 65307)
 		close_program(data);
-	// else if (check_for_rotation(k))
-	// 	change_rotation(k, data);
-	// else if (check_for_translation(k))
-	// 	change_translation(k, data);
-	// else if (check_for_scale(k))
-	// 	change_scale(k, data);
-	// (void)(data);
-	// free_maps(data->map);
+	else if (check_for_rotation(k))
+		change_rotation(k, data);
+	else if (check_for_translation(k))
+		change_translation(k, data);
+	else if (check_for_scale(k))
+		change_scale(k, data);
+	else if (k == 99)
+		clear_state(data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:55:16 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 21:49:28 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 12:34:23 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,12 @@ typedef struct	s_map
 
 typedef	struct s_state
 {
-	int	s_x;
-	int	s_y;
-	int	s_z;
 	int	r_x;
 	int	r_y;
 	int	r_z;
+	int	s_x;
+	int	s_y;
+	int	s_z;
 	int	t_x;
 	int	t_y;
 	int	t_z;
@@ -112,7 +112,7 @@ void	show_point(t_point *p);
 
 int		find_lines_count(char **strs);
 void	deep_free(char **strs);
-int		*set_array(char *str, int *len);
+void	free_map(t_map *map);
 
 void	add_back_line(t_line **head, t_line *new);
 void	add_back_point(t_point **head, t_point *new);
@@ -120,7 +120,8 @@ t_line	*ft_lstnew_line(char *str, int h, int *w);
 t_point	*ft_lstnew_point(int x, int y, char *z);
 t_map	*fill_map(char *param);
 
-void	drawmap(t_map *map, t_data *img);
+void	drawmap(t_data *data);
+void	redraw(t_data *data);
 
 float	*point_to_vector(t_point *p);
 t_point *vector_to_point(float vec[4]);
@@ -141,6 +142,7 @@ int	close_program(t_data *data);
 void	change_rotation(int k, t_data *data);
 void	change_translation(int k, t_data *data);
 void	change_scale(int k, t_data *data);
+void	clear_state(t_data *data);
 
 float	**fill_m1();
 void	free_matrix(float **m);

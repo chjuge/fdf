@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 23:09:13 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 21:49:58 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 12:14:00 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,15 @@ int	main(int argc, char **argv)
 	// t_map *map4 = translate_map(map3, get_translation(map3, data.w), 0, 0);
 
 	data.state = base_state(&data, data.map);
-	data.state_m = state_matrix(data.state);
-	t_map	*map1 = instance_map(data.map, data.state_m, data.state->t_x, data.state->t_y);
-	drawmap(map1, &data);
+	drawmap(&data);
 
 	// t_map *map1 = rotate_map(data.map, 0, 20);
 	// t_map *map2 = rotate_map(map1, 0, 25);
 	// t_map *map3 = scale_map(map2, my_ceil(data.w, data.map->w)/2, my_ceil(data.h, data.map->h)/2, 5);
 	// drawmap(map3, &data);
-
+	mlx_key_hook(data.win, key_listener, &data);
+	// mlx_hook(data->win, 17, 0, close_program, data);
+	mlx_hook(data.win, 17, 1L<<17, close_program, &data);
+	mlx_loop(data.mlx);
 	return (0);
 }
