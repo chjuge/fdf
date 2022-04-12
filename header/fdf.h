@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:55:16 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/12 12:34:23 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 17:07:53 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@
 // # include <mlx.h>
 # include "../minilibx-linux/mlx.h"
 # define WHITE 0xffffff
+# define C1 0xff
+# define C2 0xff00
+# define C3 0x802020
+# define C4 0xffffff
+# define C5 0xFF0000
 
 typedef struct	s_point
 {
@@ -85,6 +90,8 @@ typedef struct	s_data {
 	int		h;
 }				t_data;
 
+int		ft_tolower(int ch);
+int		ft_isalpha(int c);
 char	*get_next_line(int fd);
 int		find_end_of_line(char *buf);
 size_t	ft_strlen(const char *s);

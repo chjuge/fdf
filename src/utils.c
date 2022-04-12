@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 22:49:05 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/11 21:23:33 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/12 17:07:41 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,25 @@ int	get_scale_z(t_map	*map)
 			scale /= 2;
 	}
 	return (scale);
+}
+
+int	ft_tolower(int ch)
+{
+	if (ch >= 'A' && ch <= 'Z')
+		return (ch + 32);
+	return (ch);
+}
+
+int	ft_isalpha(int c)
+{
+	if (c >= 'A')
+	{
+		if (c <= 'Z')
+			return (1);
+		if (c < 'a')
+			return (0);
+		if (c <= 'z')
+			return (2);
+	}
+	return (0);
 }
