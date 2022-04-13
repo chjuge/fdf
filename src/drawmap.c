@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 11:56:22 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/12 18:23:20 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:34:46 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	draw_2_lines(t_point *p[2], t_data *img)
 	draw_line(p[0], p[1], img);
 }
 
-void	draw_by_data(t_map *map, t_data *img)
+static void	draw_by_data(t_map *map, t_data *img)
 {
 	t_line	*line[2];
 	t_point	*p[2];

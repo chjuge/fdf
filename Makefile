@@ -1,15 +1,11 @@
 DIR		= 	src
 
-SRCS	=	$(DIR)/create_new_remainder.c \
-			$(DIR)/cut_from_remainder.c \
-			$(DIR)/find_end_of_line.c \
-			$(DIR)/find_len_next_line.c \
+SRCS	=	$(DIR)/gnl_utils.c \
 			$(DIR)/get_next_line.c \
-			$(DIR)/read_file_gnl.c \
 			$(DIR)/utils1.c \
 			$(DIR)/utils2.c \
 			$(DIR)/fdf.c \
-			$(DIR)/fill_list.c \
+			$(DIR)/fill_map.c \
 			$(DIR)/ft_atoi.c \
 			$(DIR)/ft_strncmp.c \
 			$(DIR)/ft_split.c \
@@ -19,7 +15,7 @@ SRCS	=	$(DIR)/create_new_remainder.c \
 			$(DIR)/draw_line.c \
 			$(DIR)/lstnew.c \
 			$(DIR)/add_back.c \
-			$(DIR)/find_lines_count.c \
+			$(DIR)/find_smth_of_line.c \
 			$(DIR)/free.c \
 			$(DIR)/drawmap.c \
 			$(DIR)/matrix.c \
@@ -27,9 +23,6 @@ SRCS	=	$(DIR)/create_new_remainder.c \
 			$(DIR)/change.c \
 			$(DIR)/get_matrix.c \
 			$(DIR)/rotate_xyz.c \
-			$(DIR)/math_rotate.c \
-			$(DIR)/math_scale.c \
-			$(DIR)/math_translate.c \
 			$(DIR)/point_vector.c \
 			$(DIR)/initialization.c \
 			$(DIR)/state_matrix.c \

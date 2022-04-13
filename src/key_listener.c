@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 17:57:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/13 16:13:13 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/13 17:02:04 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	close_program(t_data *data)
 	return (0);
 }
 
-int	check_for_rotation(int k)
+static int	check_for_rotation(int k)
 {
 	if (k == Q
 		|| k == W
@@ -33,7 +33,7 @@ int	check_for_rotation(int k)
 	return (0);
 }
 
-int	check_for_translation(int k)
+static int	check_for_translation(int k)
 {
 	if (k == LEFT
 		|| k == RIGHT
@@ -43,7 +43,7 @@ int	check_for_translation(int k)
 	return (0);
 }
 
-int	check_for_scale(int k)
+static int	check_for_scale(int k)
 {
 	if (k == K
 		|| k == L)

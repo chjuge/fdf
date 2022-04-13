@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_list.c                                        :+:      :+:    :+:   */
+/*   fill_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:05:11 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/12 18:32:24 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/13 17:20:15 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
 
-int	find_cnt(char *str)
-{
-	int	i;
-	int	cnt;
-
-	i = 0;
-	cnt = 0;
-	while (str[i])
-	{
-		if (str[i] == ' ')
-			cnt++;
-		i++;
-	}
-	return (cnt + 1);
-}
-
-void	set_max_min_m(t_map *map, t_line *new_line)
+static void	set_max_min_m(t_map *map, t_line *new_line)
 {
 	if (map->max < new_line->max)
 		map->max = new_line->max;

@@ -6,26 +6,11 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 23:09:13 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/12 18:13:28 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:36:33 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/fdf.h"
-// #include "../minilibx_macos/mlx.h"
-
-int	get_translation(t_map *map, int w)
-{
-	int		x;
-	t_line	*line;
-
-	line = map->head;
-	while (line->next)
-	{
-		line = line->next;
-	}
-	x = w - (int)line->p_head->x;
-	return (x + 1);
-}
 
 int	main(int argc, char **argv)
 {

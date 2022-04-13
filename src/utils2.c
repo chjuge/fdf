@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 22:49:05 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/12 18:36:15 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:36:51 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,18 @@ int	get_color(char *str)
 		i++;
 	}
 	return (res);
+}
+
+int	get_translation(t_map *map, int w)
+{
+	int		x;
+	t_line	*line;
+
+	line = map->head;
+	while (line->next)
+	{
+		line = line->next;
+	}
+	x = w - (int)line->p_head->x;
+	return (x + 1);
 }

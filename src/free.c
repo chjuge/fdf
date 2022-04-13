@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:37:39 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/12 18:24:06 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:51:24 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	free_matrix(float **m)
 	free(m);
 }
 
-void	free_line(t_line *line)
+static void	free_line(t_line *line)
 {
 	t_point	*p;
 	t_point	*tmp;
