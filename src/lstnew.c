@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:31:29 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/12 18:36:51 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/13 17:37:59 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_line	*ft_lstnew_line(char *str, int h, int *w)
 		*w = i;
 	if (*w != i)
 	{
-		printf("daite pravil'nuyu kartu, pidary\n");
+		free_line(line);
 		return (NULL);
 	}
 	return (line);

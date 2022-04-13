@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:05:11 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/13 17:20:15 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/13 17:52:26 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@ static void	set_max_min_m(t_map *map, t_line *new_line)
 		map->min = new_line->min;
 }
 
-t_map	*fill_map(char *param)
+t_map	*fill_map(char *param, t_map *map)
 {
 	int		fd;
 	char	*str;
-	t_map	*map;
 	t_line	*new_line;
 
-	map = init_map();
 	fd = open(param, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
@@ -37,9 +35,14 @@ t_map	*fill_map(char *param)
 	{
 		str = ft_strtrim(str, "\n");
 		new_line = ft_lstnew_line(str, map->h, &map->w);
+		free(str);
+		if (!new_line)
+		{
+			free_map(map);
+			return (NULL);
+		}
 		add_back_line(&map->head, new_line);
 		set_max_min_m(map, new_line);
-		free(str);
 		map->h++;
 		str = get_next_line(fd);
 	}

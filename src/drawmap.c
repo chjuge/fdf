@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 11:56:22 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/13 16:34:46 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/13 17:27:20 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ void	drawmap(t_data *data)
 	data->state_m = state_matrix(data->state);
 	map = instance_map(data->map, data->state_m,
 			data->state->t_x, data->state->t_y);
-	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, data->w, data->h, "fdf");
 	data->img = mlx_new_image(data->mlx, data->w, data->h);
 	data->mlx_addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
 			&data->line_length, &data->endian);

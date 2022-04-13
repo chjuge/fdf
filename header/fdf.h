@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:55:16 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/13 17:18:14 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/13 17:52:58 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void	drawmap(t_data *data);
 void	redraw(t_data *data);
 /* ************************** */
 /* *****	fill_map.c	***** */
-t_map	*fill_map(char *param);
+t_map	*fill_map(char *param, t_map *map);
 /* ************************** */
 /* *****	find_smth_of_line.c	***** */
 int		find_end_of_line(char *buf);
@@ -145,6 +145,7 @@ int		find_lines_count(char **strs);
 /* *****	free.c	***** */
 void	deep_free(char **strs);
 void	free_matrix(float **m);
+void	free_line(t_line *line);
 void	free_map(t_map *map);
 /* ********************** */
 /* *****	ft_atoi.c	***** */
