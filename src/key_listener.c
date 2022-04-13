@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 17:57:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/13 17:02:04 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/13 18:12:06 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	close_program(t_data *data)
 	mlx_destroy_window(data->mlx, data->win);
 	free_map(data->map);
 	free(data->state);
-	return (0);
+	exit(0);
 }
 
 static int	check_for_rotation(int k)
