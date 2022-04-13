@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:55:16 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/12 18:39:41 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:10:59 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,41 @@
 # include <math.h>
 # include <string.h>
 # include <stdlib.h>
-// # include <mlx.h>
-# include "../minilibx-linux/mlx.h"
+# include <mlx.h>
+// # include "../minilibx-linux/mlx.h"
 # define WHITE 0xffffff
-
+// # define LINUX
+# ifdef LINUX
+#  define ESC 65307
+#  define LEFT 65361
+#  define RIGHT 65363
+#  define TOP 65362
+#  define BOTTOM 65364
+#  define Q 113
+#  define W 119
+#  define A 97
+#  define S 115
+#  define Z 122
+#  define X 120
+#  define C 99
+#  define K 107
+#  define L 108
+# else 
+#  define ESC 53
+#  define LEFT 123
+#  define RIGHT 124
+#  define TOP 126
+#  define BOTTOM 125
+#  define Q 12
+#  define W 13
+#  define A 0
+#  define S 1
+#  define Z 6
+#  define X 7
+#  define C 8
+#  define K 40
+#  define L 37
+# endif
 typedef struct s_point
 {
 	struct s_point	*next;

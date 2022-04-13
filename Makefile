@@ -41,7 +41,7 @@ OBJS	= 	$(SRCS:.c=.o)
 HEAD	=	header/fdf.h
 
 # MINLIB	=	minilibx_macos/libmlx.a
-MINLIB	=	minilibx-linux/libmlx.a
+# MINLIB	=	minilibx-linux/libmlx.a
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror 
@@ -53,12 +53,12 @@ NAME	=	fdf
 all:		$(NAME)
 
 %.o:		%.c	$(HEAD) 
-			$(CC) $(CFLAGS) -O3 -c $< -o $@
-# $(CC) $(CFLAGS) -Imlx -c $< -o $@
+			$(CC) $(CFLAGS) -Imlx -c $< -o $@
+# $(CC) $(CFLAGS) -O3 -c $< -o $@
 
 $(NAME):	$(OBJS) $(HEAD) 
-			$(CC) $(CFLAGS) $(OBJS) $(MINLIB) -lXext -lX11 -lm -lz -o $(NAME)
-# $(CC) $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+			$(CC) $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+# $(CC) $(CFLAGS) $(OBJS) $(MINLIB) -lXext -lX11 -lm -lz -o $(NAME)
 
 clean:		
 			$(RM) $(OBJS)

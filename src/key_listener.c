@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 17:57:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/04/12 19:02:20 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:13:13 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,37 +23,37 @@ int	close_program(t_data *data)
 
 int	check_for_rotation(int k)
 {
-	if (k == 113
-		|| k == 119
-		|| k == 97
-		|| k == 115
-		|| k == 122
-		|| k == 120)
+	if (k == Q
+		|| k == W
+		|| k == A
+		|| k == S
+		|| k == Z
+		|| k == X)
 		return (1);
 	return (0);
 }
 
 int	check_for_translation(int k)
 {
-	if (k == 65361
-		|| k == 65362
-		|| k == 65363
-		|| k == 65364)
+	if (k == LEFT
+		|| k == RIGHT
+		|| k == TOP
+		|| k == BOTTOM)
 		return (1);
 	return (0);
 }
 
 int	check_for_scale(int k)
 {
-	if (k == 107
-		|| k == 108)
+	if (k == K
+		|| k == L)
 		return (1);
 	return (0);
 }
 
 int	key_listener(int k, t_data *data)
 {
-	if (k == 65307)
+	if (k == ESC)
 		close_program(data);
 	else if (check_for_rotation(k))
 		change_rotation(k, data);
@@ -61,7 +61,7 @@ int	key_listener(int k, t_data *data)
 		change_translation(k, data);
 	else if (check_for_scale(k))
 		change_scale(k, data);
-	else if (k == 99)
+	else if (k == C)
 		clear_state(data);
 	return (0);
 }
